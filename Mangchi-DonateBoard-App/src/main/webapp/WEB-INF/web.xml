@@ -9,6 +9,15 @@
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
 	
+	
+		
+	<!-- 파일 업로드 경로 -->
+	<context-param>
+		<param-name>boardUploadPhoto</param-name>
+		<param-value>/upload/photo</param-value>
+	</context-param>
+	
+	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -30,4 +39,22 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+	<!-- 인코딩 필터 설정 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		>
+	</filter-mapping>
+	
 </web-app>
