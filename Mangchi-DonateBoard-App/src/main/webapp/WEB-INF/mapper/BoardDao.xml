@@ -5,6 +5,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.mangchi.donate.dao.BoardDao">
 
+	<resultMap type="com.mangchi.donate.model.Board" id="resultBoard">
+		<id property="donateIdx" column="donate_idx"/>
+		<result property="memberIdx" column="member_idx"/>
+		<result property="doTitle" column="donate_title"/>
+		<result property="doText" column="donate_contents"/>
+		<result property="doImg" column="donate_img"/>
+		<result property="doLoc" column="donate_loc"/>
+		<result property="doDate" column="donate_date"/>
+		<result property="doViewCnt" column="donate_viewCnt"/>
+		<result property="doParents" column="donate_parents"/>
+		<result property="doDepth" column="donate_depth"/>
+		<result property="doStatus" column="donate_status"/>
+	</resultMap>
+
+	
+	<select id="selectList" resultMap="resultBoard">
+		SELECT * FROM Mangchi.donate_board order by donate_date desc
+	</select>
 
 
 
