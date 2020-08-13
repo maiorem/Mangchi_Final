@@ -34,8 +34,8 @@ public class DonateWriteService {
 			MultipartFile doImg=writeRequest.getDoImg();
 
 			if(doImg!=null) {
-				String uri="/upload/photo";
-				String realPath=request.getSession().getServletContext().getInitParameter("boardUploadPhoto");
+				String uri="/upload";
+				String realPath=request.getSession().getServletContext().getInitParameter(uri);
 
 				imgPath=System.nanoTime()+"_"+doImg.getOriginalFilename();
 
