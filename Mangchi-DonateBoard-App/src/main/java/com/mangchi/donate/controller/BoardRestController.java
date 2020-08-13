@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mangchi.donate.model.Board;
 import com.mangchi.donate.model.BoardWriteRequest;
+import com.mangchi.donate.service.DonateDeleteServcie;
 import com.mangchi.donate.service.DonateListService;
 import com.mangchi.donate.service.DonateViewService;
 import com.mangchi.donate.service.DonateWriteService;
@@ -29,6 +31,10 @@ public class BoardRestController {
 	
 	@Autowired
 	DonateWriteService writerService;
+	
+	@Autowired
+	DonateDeleteServcie deleteService;
+	
 	
 	// 리스트 출력
 	@GetMapping
@@ -53,5 +59,9 @@ public class BoardRestController {
 	//글수정
 	
 	//글삭제
+	@DeleteMapping("/{idx}")
+	public int delete(@PathVariable int idx) {
+		return deleteService.deleteBoard(idx);
+	}
 
 }

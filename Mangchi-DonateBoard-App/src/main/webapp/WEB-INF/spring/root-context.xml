@@ -8,14 +8,29 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- Hikari Cp -->
-	<bean id="dataSource"
+<!-- 	<bean id="dataSource"
 		class="com.zaxxer.hikari.HikariDataSource" 
 		p:driverClassName="com.mysql.cj.jdbc.Driver"
 		p:jdbcUrl="jdbc:mysql://aia.cgcmfq7auqmh.ap-northeast-2.rds.amazonaws.com:3306/project?serverTimezone=UTC"
 		p:username="bit"
 		p:password="bit"
 	>
-	</bean>
+	</bean> -->
+	<bean id="hikariConfig" 
+        class="com.zaxxer.hikari.HikariConfig"
+        p:driverClassName="com.mysql.cj.jdbc.Driver"
+        p:jdbcUrl="jdbc:mysql://aia.cgcmfq7auqmh.ap-northeast-2.rds.amazonaws.com/Mangchi?serverTimezone=UTC"
+        p:username="bit"
+        p:password="bit"
+        p:maximumPoolSize="3"
+        p:minimumIdle="3"
+   />
+   
+   <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+      <constructor-arg ref="hikariConfig" />
+   </bean>
+	
+	
 	
 	<!-- MyBatis 설정 -->
 	<!-- 

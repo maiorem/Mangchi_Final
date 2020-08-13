@@ -5,8 +5,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.mangchi.donate.dao.DonateCommentDao">
 
+<resultMap type="com.mangchi.donate.model.Comments" id="resultComm">
+	<id property="commIdx" column="comment_idx"/>
+	<result property="donateIdx" column="donate_idx"/>
+	<result property="commWriter" column="member_nick"/>
+	<result property="commText" column="comment_text"/>
+	<result property="commRegdate" column="comment_regdate"/>
+	<result property="commParent" column="comment_parents"/>
+	<result property="commDepth" column="comment_depth"/>
+</resultMap>
 
 
+	<select id="getCommList"
+			resultMap="resultComm">
+		select * from Mangchi.donate_comment where donate_idx=#{idx} order by comment_idx
+	</select>
 
 
 

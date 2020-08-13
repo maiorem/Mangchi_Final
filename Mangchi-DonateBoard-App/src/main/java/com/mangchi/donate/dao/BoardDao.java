@@ -12,4 +12,10 @@ public interface BoardDao {
 
 	int insertDonate(Board donate);
 
+	int deleteBoard(int idx);
+
+	int plusViewCnt(int num, int donateIdx);
+
+	int selectCntByIdx(int donateIdx);
+
 }

@@ -38,6 +38,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{writer}, #{title}, #{content}, #{doImg}, #{doLoc})
 	
 	</insert>
+	
+	<delete id="deleteBoard">
+		delete from Mangchi.donate_board where donate_idx=#{idx}
+	</delete>
+	
+	<select id="selectCntByIdx"
+			resultType="int">
+	
+		select donate_viewCnt from Mangchi.donate_board where donate_idx=#{idx}
+	
+	</select>
+	
+	<update id="plusViewCnt">
+		update Mangchi.donate_board set donate_viewCnt=#{param1} where donate_idx=#{param2}
+	</update>
 
 
 
