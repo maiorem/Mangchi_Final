@@ -8,4 +8,8 @@ public interface BoardDao {
 
 	List<Board> selectList();
 
+	Board selectViewByIdx(int idx);
+
+	int insertDonate(Board donate);
+
 }

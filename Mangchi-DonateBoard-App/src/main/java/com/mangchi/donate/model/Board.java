@@ -3,12 +3,9 @@ package com.mangchi.donate.model;
 public class Board {
 	
 	private int donateIdx;
-	private int memberIdx;
-	
-	private String memberId;
-	
-	private String doTitle;
-	private String doText;
+	private String writer;	
+	private String title;
+	private String content;
 	private String doImg;
 	private String doLoc;
 	private String doDate;
@@ -19,36 +16,20 @@ public class Board {
 	
 	public Board() {}
 
-	public Board(int memberIdx, String doTitle, String doText) {
-		this.memberIdx = memberIdx;
-		this.doTitle = doTitle;
-		this.doText = doText;
+	public Board(String writer, String title, String content) {
+		this.writer = writer;
+		this.title = title;
+		this.content = content;
 	}
-
-	public Board(int memberIdx, String doTitle, String doText, String doImg, String doLoc, String doViewCnt,
-			int doParents, int doDepth, int doStatus) {
-		this.memberIdx = memberIdx;
-		this.doTitle = doTitle;
-		this.doText = doText;
-		this.doImg = doImg;
+	
+	
+	
+	
+	public Board(String writer, String title, String content, String doLoc) {
+		this.writer = writer;
+		this.title = title;
+		this.content = content;
 		this.doLoc = doLoc;
-		this.doViewCnt = doViewCnt;
-		this.doParents = doParents;
-		this.doDepth = doDepth;
-		this.doStatus = doStatus;
-	}
-
-	public Board(String memberId, String doTitle, String doText, String doImg, String doLoc, String doViewCnt,
-			int doParents, int doDepth, int doStatus) {
-		this.memberId = memberId;
-		this.doTitle = doTitle;
-		this.doText = doText;
-		this.doImg = doImg;
-		this.doLoc = doLoc;
-		this.doViewCnt = doViewCnt;
-		this.doParents = doParents;
-		this.doDepth = doDepth;
-		this.doStatus = doStatus;
 	}
 
 	public int getDonateIdx() {
@@ -59,36 +40,28 @@ public class Board {
 		this.donateIdx = donateIdx;
 	}
 
-	public int getMemberIdx() {
-		return memberIdx;
+	public String getWriter() {
+		return writer;
 	}
 
-	public void setMemberIdx(int memberIdx) {
-		this.memberIdx = memberIdx;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 
-	public String getMemberId() {
-		return memberId;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getDoTitle() {
-		return doTitle;
+	public String getContent() {
+		return content;
 	}
 
-	public void setDoTitle(String doTitle) {
-		this.doTitle = doTitle;
-	}
-
-	public String getDoText() {
-		return doText;
-	}
-
-	public void setDoText(String doText) {
-		this.doText = doText;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public String getDoImg() {
@@ -149,12 +122,9 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [donateIdx=" + donateIdx + ", memberIdx=" + memberIdx + ", memberId=" + memberId + ", doTitle="
-				+ doTitle + ", doText=" + doText + ", doImg=" + doImg + ", doLoc=" + doLoc + ", doDate=" + doDate
-				+ ", doViewCnt=" + doViewCnt + ", doParents=" + doParents + ", doDepth=" + doDepth + ", doStatus="
-				+ doStatus + "]";
+		return "Board [writer=" + writer + ", title=" + title + ", content=" + content + ", doImg=" + doImg + "]";
 	}
-	
+
 	
 	
 	

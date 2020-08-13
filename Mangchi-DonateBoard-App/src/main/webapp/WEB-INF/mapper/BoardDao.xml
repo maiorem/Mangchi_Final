@@ -7,9 +7,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<resultMap type="com.mangchi.donate.model.Board" id="resultBoard">
 		<id property="donateIdx" column="donate_idx"/>
-		<result property="memberIdx" column="member_idx"/>
-		<result property="doTitle" column="donate_title"/>
-		<result property="doText" column="donate_contents"/>
+		<result property="writer" column="member_nick"/>		
+		<result property="title" column="donate_title"/>
+		<result property="content" column="donate_contents"/>
 		<result property="doImg" column="donate_img"/>
 		<result property="doLoc" column="donate_loc"/>
 		<result property="doDate" column="donate_date"/>
@@ -21,10 +21,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	
 	<select id="selectList" resultMap="resultBoard">
-		SELECT * FROM Mangchi.donate_board order by donate_date desc
+		SELECT * FROM Mangchi.donate_board order by donate_idx desc
 	</select>
 
 
+	<select id="selectViewByIdx"
+			resultMap="resultBoard">
+		select * from Mangchi.donate_board where donate_idx=#{idx}
+	</select>
+	
+	<insert id="insertDonate"
+			parameterType="com.mangchi.donate.model.Board"
+			useGeneratedKeys="true"
+			keyProperty="donateIdx">
+		insert into Mangchi.donate_board (member_nick, donate_title, donate_contents, donate_img, donate_loc) 
+		values (#{writer}, #{title}, #{content}, #{doImg}, #{doLoc})
+	
+	</insert>
 
 
 

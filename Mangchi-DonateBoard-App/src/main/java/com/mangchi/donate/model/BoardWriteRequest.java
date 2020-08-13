@@ -4,10 +4,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class BoardWriteRequest {
 	
+	private String writer;
 	private String title;
-	private String contents;
+	private String content;
+	private String doLoc;
 	
-	private MultipartFile img;
+	private MultipartFile doImg;
 	
 	private String imgPath;
 	
@@ -15,10 +17,28 @@ public class BoardWriteRequest {
 	
 	}
 
-	public BoardWriteRequest(String title, String contents, String imgPath) {
+	public BoardWriteRequest(String writer, String title, String content) {
+		this.writer = writer;
 		this.title = title;
-		this.contents = contents;
-		this.imgPath = imgPath;
+		this.content = content;
+	}
+	
+	
+
+	public BoardWriteRequest(String writer, String title, String content, String doLoc) {
+
+		this.writer = writer;
+		this.title = title;
+		this.content = content;
+		this.doLoc = doLoc;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 
 	public String getTitle() {
@@ -29,20 +49,24 @@ public class BoardWriteRequest {
 		this.title = title;
 	}
 
-	public String getContents() {
-		return contents;
+	public String getContent() {
+		return content;
 	}
 
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
-	public MultipartFile getImg() {
-		return img;
+
+	
+	
+
+	public MultipartFile getDoImg() {
+		return doImg;
 	}
 
-	public void setImg(MultipartFile img) {
-		this.img = img;
+	public void setDoImg(MultipartFile doImg) {
+		this.doImg = doImg;
 	}
 
 	public String getImgPath() {
@@ -52,13 +76,29 @@ public class BoardWriteRequest {
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
+	
+	
+	
+
+	public String getDoLoc() {
+		return doLoc;
+	}
+
+	public void setDoLoc(String doLoc) {
+		this.doLoc = doLoc;
+	}
 
 	@Override
 	public String toString() {
-		return "BoardWriteRequest [title=" + title + ", contents=" + contents + ", img=" + img + ", imgPath=" + imgPath
-				+ "]";
+		return "BoardWriteRequest [writer=" + writer + ", title=" + title + ", content=" + content + ", doLoc=" + doLoc
+				+"]";
 	}
+
+
 	
+	
+	
+
 	
 	
 	
