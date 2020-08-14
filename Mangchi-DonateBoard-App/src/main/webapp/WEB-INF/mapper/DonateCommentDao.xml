@@ -21,6 +21,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from Mangchi.donate_comment where donate_idx=#{idx} order by comment_idx
 	</select>
 
+	<insert id="writeComm"
+			parameterType="com.mangchi.donate.model.Comments"
+			keyProperty="commIdx">
+			
+		insert into Mangchi.donate_comment 
+		(donate_idx, member_nick, comment_text) values
+		(#{donateIdx}, #{commWriter}, #{commText})
+	
+	</insert>
 
 
 

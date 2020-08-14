@@ -24,14 +24,6 @@ public class DonateCommentListService {
 		return dao.getCommList(donateIdx);
 	}
 	
-	//댓글 달기
-	
-	
-	//댓글의 댓글 달기
-	
-	
-	//댓글 삭제
-	
-	//댓글 수정
+
 
 }

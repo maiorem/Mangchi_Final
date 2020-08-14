@@ -12,7 +12,7 @@ public class CommWriteRequest {
 
 
 	public CommWriteRequest(int donateIdx, String commWriter, String commText) {
-			this.donateIdx = donateIdx;
+		this.donateIdx = donateIdx;
 		this.commWriter = commWriter;
 		this.commText = commText;
 	}

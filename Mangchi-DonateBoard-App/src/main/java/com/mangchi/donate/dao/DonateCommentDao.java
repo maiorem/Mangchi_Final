@@ -8,4 +8,6 @@ public interface DonateCommentDao {
 
 	List<Comments> getCommList(int donateIdx);
 
+	int writeComm(Comments comm);
+
 }

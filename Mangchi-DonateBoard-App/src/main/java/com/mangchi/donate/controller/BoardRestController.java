@@ -55,13 +55,14 @@ public class BoardRestController {
 		return writerService.writeDonate(writeRequest, request);
 	}
 
-	
-	//글수정
-	
 	//글삭제
 	@DeleteMapping("/{idx}")
 	public int delete(@PathVariable int idx) {
 		return deleteService.deleteBoard(idx);
 	}
 
+	
+	//글수정
+
+	
 }

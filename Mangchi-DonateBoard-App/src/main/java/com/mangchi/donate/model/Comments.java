@@ -10,12 +10,35 @@ public class Comments {
 	private int commParent;
 	private int commDepth;
 	
+
+	public Comments() {
 	
+	}
+
+
+
+
 	public Comments(int donateIdx, String commWriter, String commText) {
-			this.donateIdx = donateIdx;
+		this.donateIdx = donateIdx;
 		this.commWriter = commWriter;
 		this.commText = commText;
 	}
+	
+	
+
+
+	public Comments(int commIdx, int donateIdx, String commWriter, String commText, String commRegdate, int commParent,
+			int commDepth) {
+		this.commIdx = commIdx;
+		this.donateIdx = donateIdx;
+		this.commWriter = commWriter;
+		this.commText = commText;
+		this.commRegdate = commRegdate;
+		this.commParent = commParent;
+		this.commDepth = commDepth;
+	}
+
+
 
 
 	public int getCommIdx() {

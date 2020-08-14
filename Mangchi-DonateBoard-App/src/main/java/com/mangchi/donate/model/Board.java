@@ -9,7 +9,7 @@ public class Board {
 	private String doImg;
 	private String doLoc;
 	private String doDate;
-	private String doViewCnt;
+	private int doViewCnt;
 	private int doParents;
 	private int doDepth;
 	private int doStatus;
@@ -88,11 +88,13 @@ public class Board {
 		this.doDate = doDate;
 	}
 
-	public String getDoViewCnt() {
+
+
+	public int getDoViewCnt() {
 		return doViewCnt;
 	}
 
-	public void setDoViewCnt(String doViewCnt) {
+	public void setDoViewCnt(int doViewCnt) {
 		this.doViewCnt = doViewCnt;
 	}
 
