@@ -15,9 +15,6 @@ public class Comments {
 	
 	}
 
-
-
-
 	public Comments(int donateIdx, String commWriter, String commText) {
 		this.donateIdx = donateIdx;
 		this.commWriter = commWriter;
@@ -25,7 +22,13 @@ public class Comments {
 	}
 	
 	
-
+	public Comments(int donateIdx, String commWriter, String commText, int commParent, int commDepth) {
+		this.donateIdx = donateIdx;
+		this.commWriter = commWriter;
+		this.commText = commText;
+		this.commParent = commParent;
+		this.commDepth = commDepth;
+	}
 
 	public Comments(int commIdx, int donateIdx, String commWriter, String commText, String commRegdate, int commParent,
 			int commDepth) {

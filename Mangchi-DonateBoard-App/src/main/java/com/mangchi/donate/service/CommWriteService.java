@@ -19,7 +19,7 @@ public class CommWriteService {
 	public int writeComments(CommWriteRequest writeRequest) {
 		dao=template.getMapper(DonateCommentDao.class);
 		Comments comm=new Comments(writeRequest.getDonateIdx(), writeRequest.getCommWriter(), writeRequest.getCommText());
-		System.out.println("코멘트 작성 완료 =========> "+comm);		
+				
 		return dao.writeComm(comm);
 	}
 
