@@ -12,7 +12,7 @@ public class BoardListView {
 
 	private List<Board> boardList;
 
-	public BoardListView(int messageTotalCount, int currentPageNumber, int messagePerPage, int pageTotalCount,
+	public BoardListView(int messageTotalCount, int currentPageNumber, int messagePerPage,
 			int startrow, List<Board> boardList) {
 		this.messageTotalCount = messageTotalCount;
 		this.currentPageNumber = currentPageNumber;

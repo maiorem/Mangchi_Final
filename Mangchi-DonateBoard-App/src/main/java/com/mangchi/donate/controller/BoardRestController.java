@@ -1,7 +1,5 @@
 package com.mangchi.donate.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mangchi.donate.model.Board;
+import com.mangchi.donate.model.BoardListView;
 import com.mangchi.donate.model.BoardWriteRequest;
 import com.mangchi.donate.service.DonateDeleteServcie;
 import com.mangchi.donate.service.DonateListService;
@@ -38,8 +37,8 @@ public class BoardRestController {
 	
 	// 리스트 출력
 	@GetMapping
-	public List<Board> getBoardList(){
-		return listService.getBoardList();
+	public BoardListView getBoardList(HttpServletRequest request){
+		return listService.getBoardList(request);
 	}
 	
 	//idx로 개별 뷰 출력

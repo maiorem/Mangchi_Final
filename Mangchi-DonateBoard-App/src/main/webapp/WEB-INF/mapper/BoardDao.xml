@@ -19,17 +19,41 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="doStatus" column="donate_status"/>
 	</resultMap>
 
-	
-	<select id="selectList" resultMap="resultBoard">
-		SELECT * FROM Mangchi.donate_board order by donate_idx desc
+	<!-- 게시판 리스트 출력 -->
+	<select id="selectList" parameterType="map" resultMap="resultBoard">
+		select * from Mangchi.donate_board
+		<where>
+			<if test="searchKey!=null">
+				or member_nick like concat('%', #{searchKey}, '%')
+				or donate_title like concat('%', #{searchKey}, '%')
+			</if>
+		
+		</where>
+		order by donate_idx desc
+		limit #{startrow}, #{count} 
 	</select>
 
 
+	<!-- 게시물 수 카운트 -->
+	<select id="totalCount" parameterType="map" resultType="int">
+		select count(*) from Mangchi.donate_board
+		<where>
+			<if test="searchKey!=null">
+				or member_nick like concat('%', #{searchKey}, '%')
+				or donate_title like concat('%', #{searchKey}, '%')
+			</if>
+		
+		</where>
+		
+	</select>
+
+	<!-- 상세 뷰 출력 -->
 	<select id="selectViewByIdx"
 			resultMap="resultBoard">
 		select * from Mangchi.donate_board where donate_idx=#{idx}
 	</select>
 	
+	<!-- 게시물 쓰기 -->
 	<insert id="insertDonate"
 			parameterType="com.mangchi.donate.model.Board"
 			useGeneratedKeys="true"
@@ -39,10 +63,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</insert>
 	
+	<!-- 게시물 삭제 -->
 	<delete id="deleteBoard">
 		delete from Mangchi.donate_board where donate_idx=#{idx}
 	</delete>
 	
+	<!-- 조회수 보기 -->
 	<select id="selectCntByIdx"
 			resultType="int">
 	
@@ -50,9 +76,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
+	<!-- 조회수 업뎃 -->
 	<update id="plusViewCnt">
 		update Mangchi.donate_board set donate_viewCnt=#{param1} where donate_idx=#{param2}
 	</update>
+
 
 
 

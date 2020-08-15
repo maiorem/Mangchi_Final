@@ -1,12 +1,15 @@
 package com.mangchi.donate.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.mangchi.donate.model.Board;
 
 public interface BoardDao {
 
-	List<Board> selectList();
+	List<Board> selectList(Map search);
+	
+	int totalCount(Map search);
 
 	Board selectViewByIdx(int idx);
 
@@ -17,5 +20,6 @@ public interface BoardDao {
 	int plusViewCnt(int num, int donateIdx);
 
 	int selectCntByIdx(int donateIdx);
+
 
 }
