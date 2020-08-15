@@ -32,7 +32,7 @@ public class DonateListService {
 		
 		Map<String, Object> search=new HashMap<String, Object>();
 		
-		String searchKey=request.getParameter("searchKeyWord");
+		String searchKey=request.getParameter("searchKey");
 		System.out.println("검색 키워드 : "+searchKey);
 		
 		if(searchKey!=null && !searchKey.isEmpty()) {

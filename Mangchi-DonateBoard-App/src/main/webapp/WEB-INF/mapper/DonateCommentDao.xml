@@ -14,8 +14,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<result property="commParent" column="comment_parents"/>
 	<result property="commDepth" column="comment_depth"/>
 </resultMap>
-
-
+	
+	<!-- 현 페이지 코멘트 갯수 -->
+	<select id="commTotalCount"
+			resultType="int">
+		select count(*) from Mangchi.donate_comment where donate_idx=#{idx}
+	
+	</select>
+	
+	<!-- 현 페이지 코멘트 리스트 (대댓글 구현중) -->
 	<select id="getCommList"
 			resultMap="resultComm">
 		SELECT * FROM Mangchi.donate_comment where donate_idx=#{idx} 
@@ -23,6 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</select>
 
+	<!-- 코멘트 쓰기 -->
 	<insert id="writeComm"
 			parameterType="com.mangchi.donate.model.Comments"
 			keyProperty="commIdx">
@@ -33,6 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</insert>
 	
+	<!-- 대댓글 쓰기 -->
 	<insert id="reply"
 			parameterType="com.mangchi.donate.model.Comments"
 			keyProperty="commIdx">
@@ -41,8 +50,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(donate_idx, member_nick, comment_text, comment_parents, comment_depth) values
 		(#{donateIdx}, #{commWriter}, #{commText}, #{commParent}, #{commDepth})	
 			
-			
-	
 	</insert>
 
 

@@ -1,6 +1,6 @@
 package com.mangchi.donate.controller;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mangchi.donate.model.CommReplyRequest;
 import com.mangchi.donate.model.CommWriteRequest;
-import com.mangchi.donate.model.Comments;
+import com.mangchi.donate.model.CommentListView;
 import com.mangchi.donate.service.CommReplyService;
 import com.mangchi.donate.service.CommWriteService;
 import com.mangchi.donate.service.DonateCommentListService;
@@ -31,8 +31,8 @@ public class DonateCommentsRestController {
 	
 	
 	@GetMapping("/{donateIdx}")
-	public List<Comments> getCommentList(@PathVariable("donateIdx") int donateIdx){
-		return listService.getCommList(donateIdx);
+	public CommentListView getCommentList(@PathVariable("donateIdx") int donateIdx, HttpServletRequest request){
+		return listService.getCommList(donateIdx, request);
 		
 	}
 	
