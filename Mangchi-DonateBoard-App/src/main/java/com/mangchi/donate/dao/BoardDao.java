@@ -21,5 +21,7 @@ public interface BoardDao {
 
 	int selectCntByIdx(int donateIdx);
 
+	String getImg(String doImg);
+
 
 }

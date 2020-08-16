@@ -81,6 +81,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update Mangchi.donate_board set donate_viewCnt=#{param1} where donate_idx=#{param2}
 	</update>
 
+	<select id="getImg">
+		select donate_img from Mangchi.donate_board where donate_img=#{img}
+	</select>
 
 
 
