@@ -91,10 +91,10 @@ public class BoardWriteRequest {
 	@Override
 	public String toString() {
 		return "BoardWriteRequest [writer=" + writer + ", title=" + title + ", content=" + content + ", doLoc=" + doLoc
-				+"]";
+				+ "]";
 	}
 
-
+	
 	
 	
 	

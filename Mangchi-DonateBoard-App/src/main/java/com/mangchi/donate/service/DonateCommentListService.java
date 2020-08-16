@@ -21,7 +21,7 @@ public class DonateCommentListService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	private final int COMMENTS_COUNT_PER_PAGE=12;
+	private final int COMMENTS_COUNT_PER_PAGE=50;
 
 	
 	//한 게시글에 있는 댓글 리스트

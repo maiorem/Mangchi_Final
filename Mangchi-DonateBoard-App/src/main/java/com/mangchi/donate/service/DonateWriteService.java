@@ -35,20 +35,27 @@ public class DonateWriteService {
 
 			if(doImg!=null) {
 				String uri="/upload";
-				String realPath=request.getSession().getServletContext().getInitParameter(uri);
+				String realPath=request.getSession().getServletContext().getRealPath(uri);
 
-				imgPath=System.nanoTime()+"_"+doImg.getOriginalFilename();
+				String fileName=System.nanoTime()+"_"+doImg.getOriginalFilename();
 
-				File saveFile=new File(realPath, imgPath);
+				File saveFile=new File(realPath, fileName);
 
 				doImg.transferTo(saveFile);
-				donate.setDoImg(imgPath);
 				
-				System.out.println("게시글 생성 ==========> "+donate);
-				System.out.println("저장 완료");
+				System.out.println("이미지 절대경로 : "+realPath);
+				imgPath=realPath+"/"+fileName;
+			
+				donate.setDoImg(fileName);
+				
+				
+				System.out.println("저장 완료 : "+fileName);
 
+			} else {
+				donate.setDoImg("default.png");
 			}
 			
+			System.out.println("게시글 생성 ==========> "+donate);
 			result=dao.insertDonate(donate);
 
 		} catch (IllegalStateException | IOException e) {

@@ -19,8 +19,9 @@ public class CommReplyService {
 
 	public int reply(CommReplyRequest replyRequest) {
 		dao=template.getMapper(DonateCommentDao.class);
+		System.out.println("대댓글 요청 =========> "+replyRequest);
 		Comments reComm=new Comments(replyRequest.getDonateIdx(), replyRequest.getCommWriter(), replyRequest.getCommText(), replyRequest.getCommParent(), replyRequest.getCommDepth()+1);
-				
+		System.out.println("방금 쓴 대댓글 =======> "+reComm);		
 		return dao.reply(reComm);
 	}
 

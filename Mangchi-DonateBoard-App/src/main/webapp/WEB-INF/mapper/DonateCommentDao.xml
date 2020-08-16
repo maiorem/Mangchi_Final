@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getCommList"
 			resultMap="resultComm">
 		SELECT * FROM Mangchi.donate_comment where donate_idx=#{idx} 
-		order by if(isnull(comment_parents), comment_idx, comment_parents)
+		order by comment_idx, comment_parents
 		
 	</select>
 
