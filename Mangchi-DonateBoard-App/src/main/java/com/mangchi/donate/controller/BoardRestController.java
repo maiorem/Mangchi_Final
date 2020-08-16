@@ -2,6 +2,7 @@ package com.mangchi.donate.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,8 +38,8 @@ public class BoardRestController {
 	
 	// 리스트 출력
 	@GetMapping
-	public BoardListView getBoardList(HttpServletRequest request){
-		return listService.getBoardList(request);
+	public BoardListView getBoardList(HttpServletRequest request, @Param(value = "page") String page, @Param(value = "searchKey") String searchKey){
+		return listService.getBoardList(request, page, searchKey);
 	}
 	
 	//idx로 개별 뷰 출력
