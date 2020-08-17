@@ -25,8 +25,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 현 페이지 코멘트 리스트 (대댓글 구현중) -->
 	<select id="getCommList"
 			resultMap="resultComm">
-		SELECT * FROM Mangchi.donate_comment where donate_idx=#{idx} 
+		SELECT * FROM Mangchi.donate_comment where donate_idx=#{param1} 
 		order by comment_idx, comment_parents
+		limit #{param2}, #{param3}
 		
 	</select>
 

@@ -21,7 +21,7 @@ public class DonateCommentListService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	private final int COMMENTS_COUNT_PER_PAGE=50;
+	private final int COMMENTS_COUNT_PER_PAGE=10;
 
 	
 	//한 게시글에 있는 댓글 리스트
@@ -44,7 +44,7 @@ public class DonateCommentListService {
 		
 		if(commTotalCount>0) {
 			startrow=(currentPage-1)*COMMENTS_COUNT_PER_PAGE;
-			commList=dao.getCommList(donateIdx);
+			commList=dao.getCommList(donateIdx, startrow, COMMENTS_COUNT_PER_PAGE);
 			
 		} else {
 			currentPage=0;
