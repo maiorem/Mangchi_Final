@@ -24,7 +24,7 @@ public class DonateListService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	private final int MESSAGE_COUNT_PER_PAGE=12;
+	private final int MESSAGE_COUNT_PER_PAGE=6;
 
 	
 	public BoardListView getBoardList(HttpServletRequest request) {
