@@ -51,6 +51,10 @@ public class DonateEditService {
 				}
 
 				System.out.println("저장 완료 : "+fileName);
+			} else {
+				
+				board.setDoImg(editRequest.getOldImg());
+				
 			}
 			
 			result=dao.editDonateBoard(board);
