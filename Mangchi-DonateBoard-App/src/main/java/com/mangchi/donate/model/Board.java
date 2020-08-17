@@ -34,6 +34,17 @@ public class Board {
 	
 	
 
+	public Board(int donateIdx, String writer, String title, String content, String doImg, String doLoc, int doStatus) {
+
+		this.donateIdx = donateIdx;
+		this.writer = writer;
+		this.title = title;
+		this.content = content;
+		this.doImg = doImg;
+		this.doLoc = doLoc;
+		this.doStatus = doStatus;
+	}
+
 	public Board(int donateIdx, String writer, String title, String content, String doImg, String doLoc, String doDate,
 			int doViewCnt, int doParents, int doDepth, int doStatus) {
 		this.donateIdx = donateIdx;

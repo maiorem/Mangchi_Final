@@ -2,7 +2,6 @@ package com.mangchi.donate.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mangchi.donate.model.Board;
+import com.mangchi.donate.model.BoardEditRequest;
 import com.mangchi.donate.model.BoardListView;
 import com.mangchi.donate.model.BoardWriteRequest;
 import com.mangchi.donate.service.DonateDeleteServcie;
+import com.mangchi.donate.service.DonateEditService;
 import com.mangchi.donate.service.DonateListService;
 import com.mangchi.donate.service.DonateViewService;
 import com.mangchi.donate.service.DonateWriteService;
@@ -35,11 +36,14 @@ public class BoardRestController {
 	@Autowired
 	DonateDeleteServcie deleteService;
 	
+	@Autowired
+	DonateEditService editService;
+	
 	
 	// 리스트 출력
 	@GetMapping
-	public BoardListView getBoardList(HttpServletRequest request, @Param(value = "page") String page, @Param(value = "searchKey") String searchKey){
-		return listService.getBoardList(request, page, searchKey);
+	public BoardListView getBoardList(HttpServletRequest request){
+		return listService.getBoardList(request);
 	}
 	
 	//idx로 개별 뷰 출력
@@ -63,6 +67,9 @@ public class BoardRestController {
 
 	
 	//글수정
-
+	@PostMapping("/{idx}")
+	public int update(BoardEditRequest editRequest, HttpServletRequest request) {
+		return editService.editBoard(editRequest, request);
+	}
 	
 }

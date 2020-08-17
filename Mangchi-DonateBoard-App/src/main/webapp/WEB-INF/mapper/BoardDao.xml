@@ -68,6 +68,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from Mangchi.donate_board where donate_idx=#{idx}
 	</delete>
 	
+	
+	<!-- 게시물 수정 -->
+	<update id="editDonateBoard"
+			parameterType="com.mangchi.donate.model.Board">
+	
+		update Mangchi.donate_board 
+		set 
+		member_nick=#{writer}, donate_title=#{title}, donate_contents=#{content}, donate_img=#{doImg}, donate_loc=#{doLoc}, donate_status=#{doStatus}		
+		where donate_idx=#{donateIdx}
+	
+	</update>
+	
+	
 	<!-- 조회수 보기 -->
 	<select id="selectCntByIdx"
 			resultType="int">

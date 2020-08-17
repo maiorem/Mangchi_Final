@@ -27,12 +27,12 @@ public class DonateListService {
 	private final int MESSAGE_COUNT_PER_PAGE=12;
 
 	
-	public BoardListView getBoardList(HttpServletRequest request, String page, String searchKey) {
+	public BoardListView getBoardList(HttpServletRequest request) {
 		dao=template.getMapper(BoardDao.class);
 		
 		Map<String, Object> search=new HashMap<String, Object>();
 		
-		//String searchKey=request.getParameter("searchKey");
+		String searchKey=request.getParameter("searchKey");
 		System.out.println("검색 키워드 : "+searchKey);
 		
 		if(searchKey!=null && !searchKey.isEmpty()) {
@@ -47,7 +47,8 @@ public class DonateListService {
 		System.out.println("전체 게시물 수: "+messageTotalCount);
 		int startrow=0;
 		int currentPage=1;
-		//String page=request.getParameter("page");
+		
+		String page=request.getParameter("page");
 		System.out.println("파라미터 페이지 :"+page);
 		
 		if(page!=null) {

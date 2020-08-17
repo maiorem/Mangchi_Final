@@ -28,7 +28,7 @@ public class DonateWriteService {
 		Board donate=new Board(writeRequest.getWriter(), writeRequest.getTitle(), writeRequest.getContent(), writeRequest.getDoLoc());	
 		
 		int result=0;
-		String imgPath=null;
+
 		
 		try {
 			MultipartFile doImg=writeRequest.getDoImg();
@@ -44,7 +44,7 @@ public class DonateWriteService {
 				doImg.transferTo(saveFile);
 				
 				System.out.println("이미지 절대경로 : "+realPath);
-				imgPath=realPath+"/"+fileName;
+
 			
 				donate.setDoImg(fileName);
 				
