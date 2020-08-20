@@ -12,7 +12,7 @@ import com.mangchi.subscribe.model.NotificKeyRequest;
 import com.mangchi.subscribe.model.Notification;
 
 @Service
-public class NotificationService {
+public class NotificationInsertKeyService {
 	
 	private NotificationDao dao;
 	

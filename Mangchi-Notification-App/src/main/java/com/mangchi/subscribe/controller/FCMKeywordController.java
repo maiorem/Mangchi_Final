@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mangchi.subscribe.model.NotificKeyRequest;
 import com.mangchi.subscribe.model.Notification;
 import com.mangchi.subscribe.service.NotificationDeleteService;
+import com.mangchi.subscribe.service.NotificationInsertKeyService;
 import com.mangchi.subscribe.service.NotificationListService;
-import com.mangchi.subscribe.service.NotificationService;
 
 @RestController
 @RequestMapping("/fcmKey")
 public class FCMKeywordController {
 	
 	@Autowired
-	NotificationService noticeService;
+	NotificationInsertKeyService noticeService;
 	
 	@Autowired
 	NotificationListService noticeListService;

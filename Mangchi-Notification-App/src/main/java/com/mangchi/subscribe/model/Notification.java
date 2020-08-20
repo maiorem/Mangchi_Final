@@ -6,6 +6,7 @@ public class Notification {
 	private String memberNick;
 	private String token;
 	private String keyword;
+	private String regdate;
 
 	public Notification() {
 		
@@ -18,12 +19,14 @@ public class Notification {
 		this.keyword = keyword;
 	}
 
-	public Notification(int noticeIdx, String memberNick, String token, String keyword) {
+
+	public Notification(int noticeIdx, String memberNick, String token, String keyword, String regdate) {
 
 		this.noticeIdx = noticeIdx;
 		this.memberNick = memberNick;
 		this.token = token;
 		this.keyword = keyword;
+		this.regdate = regdate;
 	}
 
 	public int getNoticeIdx() {
@@ -58,11 +61,23 @@ public class Notification {
 		this.keyword = keyword;
 	}
 
+	
+	
+	
+	public String getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
+
 	@Override
 	public String toString() {
 		return "Notification [noticeIdx=" + noticeIdx + ", memberNick=" + memberNick + ", token=" + token + ", keyword="
-				+ keyword + "]";
+				+ keyword + ", regdate=" + regdate + "]";
 	}
+
 	
 	
 
