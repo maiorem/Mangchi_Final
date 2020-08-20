@@ -20,9 +20,10 @@ public class NotificationService {
 	private SqlSessionTemplate template;
 
 	public int insertKeyword(NotificKeyRequest notReqesut) {
+		System.out.println("키워드 등록 요청 ========> "+notReqesut);
 		dao=template.getMapper(NotificationDao.class);
-		Notification keyword=new Notification(notReqesut.getNoticeUser(), notReqesut.getToken(), notReqesut.getNoticeKeyword());
-		
+		Notification keyword=new Notification(notReqesut.getMemberNick(), notReqesut.getToken(), notReqesut.getKeyword());
+		System.out.println("키워드 등록!!! ========> "+keyword);
 		return dao.insertKeyword(keyword);
 	}
 

@@ -2,34 +2,33 @@ package com.mangchi.subscribe.model;
 
 public class NotificKeyRequest {
 	
-	private String noticeUser;
-	private String noticeKeyword;
-	private Long noticeToken;
-	
-	public String getNoticeUser() {
-		return noticeUser;
+	private String memberNick;
+	private String keyword;
+	private String token;
+	public String getMemberNick() {
+		return memberNick;
 	}
-	public void setNoticeUser(String noticeUser) {
-		this.noticeUser = noticeUser;
+	public void setMemberNick(String memberNick) {
+		this.memberNick = memberNick;
 	}
-	public String getNoticeKeyword() {
-		return noticeKeyword;
+	public String getKeyword() {
+		return keyword;
 	}
-	public void setNoticeKeyword(String noticeKeyword) {
-		this.noticeKeyword = noticeKeyword;
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
-	
-	public Long getToken() {
-		return noticeToken;
+	public String getToken() {
+		return token;
 	}
-	public void setToken(Long noticeToken) {
-		this.noticeToken = noticeToken;
+	public void setToken(String token) {
+		this.token = token;
 	}
 	@Override
 	public String toString() {
-		return "NotificKeyRequest [noticeUser=" + noticeUser + ", noticeKeyword=" + noticeKeyword + ", noticeToken=" + noticeToken
-				+ "]";
+		return "NotificKeyRequest [memberNick=" + memberNick + ", keyword=" + keyword + ", token=" + token + "]";
 	}
+
+	
 	
 	
 	

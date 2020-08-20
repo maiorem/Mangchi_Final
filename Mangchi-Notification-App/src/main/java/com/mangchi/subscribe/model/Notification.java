@@ -4,11 +4,23 @@ public class Notification {
 	
 	private int noticeIdx;
 	private String memberNick;
-	private Long token;
+	private String token;
 	private String keyword;
 
-	public Notification(String memberNick, Long token, String keyword) {
+	public Notification() {
+		
+	}
 
+	public Notification(String memberNick, String token, String keyword) {
+
+		this.memberNick = memberNick;
+		this.token = token;
+		this.keyword = keyword;
+	}
+
+	public Notification(int noticeIdx, String memberNick, String token, String keyword) {
+
+		this.noticeIdx = noticeIdx;
 		this.memberNick = memberNick;
 		this.token = token;
 		this.keyword = keyword;
@@ -30,11 +42,11 @@ public class Notification {
 		this.memberNick = memberNick;
 	}
 
-	public Long getToken() {
+	public String getToken() {
 		return token;
 	}
 
-	public void setToken(Long token) {
+	public void setToken(String token) {
 		this.token = token;
 	}
 
