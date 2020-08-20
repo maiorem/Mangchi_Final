@@ -3,6 +3,7 @@ package com.mangchi.donate.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +37,7 @@ public class DonateCommentsRestController {
 	
 	
 	@GetMapping("/{donateIdx}")
+	@CrossOrigin
 	public CommentListView getCommentList(@PathVariable("donateIdx") int donateIdx, HttpServletRequest request){
 		return listService.getCommList(donateIdx, request);
 		
@@ -43,17 +45,20 @@ public class DonateCommentsRestController {
 	
 	//댓글 쓰기
 	@PostMapping
+	@CrossOrigin
 	public int writeComm(CommWriteRequest writeRequest) {
 		return writeService.writeComments(writeRequest);
 	}
 	
 	//대댓글 쓰기
 	@PostMapping("/reply")
+	@CrossOrigin
 	public int writereplyComm(CommReplyRequest replyRequest) {
 		return replySerivce.reply(replyRequest);
 	}
 	
 	@DeleteMapping("/{commIdx}")
+	@CrossOrigin
 	public int deleteComm(@PathVariable int commIdx) {
 		return deleteService.deleteMessage(commIdx);		
 	}

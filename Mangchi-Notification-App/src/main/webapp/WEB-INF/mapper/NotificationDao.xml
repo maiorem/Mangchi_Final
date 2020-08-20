@@ -3,9 +3,9 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.mangchi.donate.fcm.dao.NotificationDao">
+<mapper namespace="com.mangchi.subscribe.dao.NotificationDao">
 
-	<resultMap type="com.mangchi.donate.fcm.model.Notification" id="resultFcm">
+	<resultMap type="com.mangchi.subscribe.model.Notification" id="resultFcm">
 		<id property="noticeIdx" column="notice_idx"/>
 		<result property="memberNick" column="member_nick"/>		
 		<result property="token" column="notice_token"/>
@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
 	<insert id="insertKeyword"
-			parameterType="com.mangchi.donate.fcm.model.Notification"
+			parameterType="com.mangchi.subscribe.model.Notification"
 			useGeneratedKeys="true"
 			keyProperty="noticeIdx">
 		insert into Mangchi.donate_notification (member_nick, notice_token, notice_keyword)

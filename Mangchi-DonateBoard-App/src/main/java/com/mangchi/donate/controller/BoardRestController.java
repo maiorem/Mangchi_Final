@@ -3,6 +3,7 @@ package com.mangchi.donate.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,18 +43,21 @@ public class BoardRestController {
 	
 	// 리스트 출력
 	@GetMapping
+	@CrossOrigin
 	public BoardListView getBoardList(HttpServletRequest request){
 		return listService.getBoardList(request);
 	}
 	
 	//idx로 개별 뷰 출력
 	@GetMapping("/{idx}")
+	@CrossOrigin
 	public Board getBoardView(@PathVariable int idx) {
 		return viewService.getViewByidx(idx);
 	}
 	
 	//글쓰기
 	@PostMapping
+	@CrossOrigin
 	public int write(BoardWriteRequest writeRequest, HttpServletRequest request) {
 		System.out.println("글쓰기 요청 받기 =====> "+writeRequest);
 		return writerService.writeDonate(writeRequest, request);
@@ -61,6 +65,7 @@ public class BoardRestController {
 
 	//글삭제
 	@DeleteMapping("/{idx}")
+	@CrossOrigin
 	public int delete(@PathVariable int idx) {
 		return deleteService.deleteBoard(idx);
 	}
@@ -68,6 +73,7 @@ public class BoardRestController {
 	
 	//글수정
 	@PostMapping("/{idx}")
+	@CrossOrigin
 	public int update(BoardEditRequest editRequest, HttpServletRequest request) {
 		return editService.editBoard(editRequest, request);
 	}
