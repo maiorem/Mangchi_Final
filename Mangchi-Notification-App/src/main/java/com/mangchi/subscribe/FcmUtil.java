@@ -44,7 +44,6 @@ public class FcmUtil {
 					.setNotification(WebpushNotification.builder()
 							.setTitle(title)
 							.setBody(content)
-							.setIcon("mangchi_logo")
 							.build())
 					.build())
 				.setToken(registrationToken)
