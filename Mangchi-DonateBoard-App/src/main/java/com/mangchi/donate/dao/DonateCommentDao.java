@@ -12,6 +12,8 @@ public interface DonateCommentDao {
 	int writeComm(Comments comm);
 
 	int reply(Comments reComm);
+	
+	int deleteMessage(int commIdx);
 
 
 

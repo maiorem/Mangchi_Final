@@ -53,6 +53,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			
 	</insert>
 
+	<!-- 댓글 삭제 -->
+	<delete id="deleteMessage">
+	
+		delete from Mangchi.donate_comment where comment_idx=#{commIdx}
+	
+	</delete>
 
 
 </mapper>

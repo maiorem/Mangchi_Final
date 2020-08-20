@@ -3,6 +3,7 @@ package com.mangchi.donate.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mangchi.donate.model.CommReplyRequest;
 import com.mangchi.donate.model.CommWriteRequest;
 import com.mangchi.donate.model.CommentListView;
+import com.mangchi.donate.service.CommDeleteService;
 import com.mangchi.donate.service.CommReplyService;
 import com.mangchi.donate.service.CommWriteService;
 import com.mangchi.donate.service.DonateCommentListService;
@@ -28,6 +30,9 @@ public class DonateCommentsRestController {
 	
 	@Autowired
 	CommReplyService replySerivce;
+	
+	@Autowired
+	CommDeleteService deleteService;
 	
 	
 	@GetMapping("/{donateIdx}")
@@ -48,6 +53,10 @@ public class DonateCommentsRestController {
 		return replySerivce.reply(replyRequest);
 	}
 	
+	@DeleteMapping("/{commIdx}")
+	public int deleteComm(@PathVariable int commIdx) {
+		return deleteService.deleteMessage(commIdx);		
+	}
 	
 	
 	
