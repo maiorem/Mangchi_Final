@@ -19,7 +19,6 @@ public class NotificationListService {
 
 	public List<Notification> keywordByNick(String memberNick) {
 		dao=template.getMapper(NotificationDao.class);
-		System.out.println("키워드 리스트를 뽑을 유저 ===> "+memberNick);
 		return dao.selectKeyByMember(memberNick);
 	}
 

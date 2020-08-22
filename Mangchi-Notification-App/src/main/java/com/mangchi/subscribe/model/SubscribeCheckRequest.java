@@ -1,9 +1,10 @@
 package com.mangchi.subscribe.model;
 
-public class SubscribeRequest {
-
+public class SubscribeCheckRequest {
+	
 	private String memberNick;
 	private String token;
+	private String title;
 	
 	public String getMemberNick() {
 		return memberNick;
@@ -17,10 +18,20 @@ public class SubscribeRequest {
 	public void setToken(String token) {
 		this.token = token;
 	}
+	
+	
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	@Override
 	public String toString() {
-		return "SubscribeRequest [memberNick=" + memberNick + ", token=" + token + "]";
+		return "SubscribeCheckRequest [memberNick=" + memberNick + ", token=" + token + ", title=" + title + "]";
 	}
+	
 	
 	
 }

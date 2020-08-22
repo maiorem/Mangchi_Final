@@ -19,6 +19,6 @@ public class SubscribeController {
 	public int subscribeReg(SubscribeRequest subRequest) {
 		return regService.subscriberReg(subRequest);
 	}
-	
+
 
 }

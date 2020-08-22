@@ -1,18 +1,38 @@
 package com.mangchi.subscribe.controller;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.mangchi.subscribe.service.NotificationInsertKeyService;
+import com.mangchi.subscribe.model.NotificationCheckRequest;
+import com.mangchi.subscribe.model.SubscribeCheckRequest;
+import com.mangchi.subscribe.util.FcmKeyNotificationUtil;
+import com.mangchi.subscribe.util.FcmSubscribeUtil;
 
+@RestController
+@RequestMapping("/register")
 public class NotificationApiController {
 	
-//    private final NotificationService notificationService;
-//
-//    @PostMapping("/register")
-//    public ResponseEntity register(@RequestBody String token, @RequestBody String userSession) {
-//        notificationService.register(userSession, token);
-//        return ResponseEntity.ok().build();
-//    }
+	@Autowired
+	FcmSubscribeUtil subscribeUtil;
+	
+	@Autowired
+	FcmKeyNotificationUtil keyUtil;
+	
+	@GetMapping
+	public void subscribeNotification(SubscribeCheckRequest subRequest) {
+
+		subscribeUtil.sendFcm(subRequest);
+		
+	} 
+	
+	
+	@GetMapping("/{token}")
+	public void keyNotification(NotificationCheckRequest noticRequest) {
+
+		keyUtil.sendFcm(noticRequest);
+	}
+
 
 }

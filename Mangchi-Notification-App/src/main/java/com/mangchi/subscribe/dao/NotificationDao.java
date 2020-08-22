@@ -15,4 +15,6 @@ public interface NotificationDao {
 
 	int regSubscriber(Subscribe sub);
 
+	int countTrue(String memberNick);
+
 }
