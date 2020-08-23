@@ -56,5 +56,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from Mangchi.donate_subscribe where member_nick=#{memberNick}
 	</select>
 	
+	<select id="selectKeyword"
+			resultMap="resultFcm"
+			resultType="String">
+		select notice_keyword from Mangchi.donate_notification
+		where member_nick=#{memberNick}
+	</select>
+	
 
 </mapper>

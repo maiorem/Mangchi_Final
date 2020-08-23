@@ -17,4 +17,6 @@ public interface NotificationDao {
 
 	int countTrue(String memberNick);
 
+	List<String> selectKeyword(String memberNick);
+
 }

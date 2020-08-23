@@ -59,32 +59,41 @@ public class FcmKeyNotificationUtil {
 			//글쓴 사람이 올린 제목과 데이터베이스의 키워드 비교
 			String keyTitle=noticeRequest.getTitle();
 			List<String> keyword=dao.selectKeyword(noticeRequest.getMemberNick());
-			
-			
-			//기기의 토큰 입력
-			String registrationToken= noticeRequest.getToken();
-			
-			//제목 생성
-			String title= "동네에서 대여하기 :: MANGCHI! 나눔게시판";
-			
-			//내용 생성
-			String content= "키워드 새 글 : "+noticeRequest.getTitle();
-			
-			//메시지 작성
-			Message msg=Message.builder()
-					.setWebpushConfig(WebpushConfig.builder()
-						.setNotification(WebpushNotification.builder()
-								.setTitle(title)
-								.setBody(content)
+			for(int i=0; i<keyword.size(); i++) {
+				if(!keyTitle.contains((CharSequence) keyword)) {
+					throw new Exception("키워드가 일치하지 않습니다.");
+					
+				} else {
+					
+					//기기의 토큰 입력
+					String registrationToken= noticeRequest.getToken();
+					
+					//제목 생성
+					String title= "동네에서 대여하기 :: MANGCHI! 나눔게시판";
+					
+					//내용 생성
+					String content= "키워드 새 글 : "+noticeRequest.getTitle();
+					
+					//메시지 작성
+					Message msg=Message.builder()
+							.setWebpushConfig(WebpushConfig.builder()
+								.setNotification(WebpushNotification.builder()
+										.setTitle(title)
+										.setBody(content)
+										.build())
 								.build())
-						.build())
-					.setToken(registrationToken)
-					.build();
-			
-			//메시지를 firebase messaging에 보내기
-			String response=FirebaseMessaging.getInstance().send(msg);
-			
-			System.out.println("메시지 전송 성공 : " +response);
+							.setToken(registrationToken)
+							.build();
+					
+					//메시지를 firebase messaging에 보내기
+					String response=FirebaseMessaging.getInstance().send(msg);
+					
+					System.out.println("메시지 전송 성공 : " +response);
+					
+					
+				}
+			}
+
 		
 		}
 		} catch (FileNotFoundException e) {
