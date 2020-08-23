@@ -38,6 +38,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
+	<!-- 키워드 존재 여부 검사 -->
+	<select id="selectKeyword"
+			resultMap="resultFcm"
+			resultType="String">
+		select notice_keyword from Mangchi.donate_notification
+		where member_nick=#{memberNick}
+	</select>
+	
+	
 	<!-- 키워드 삭제 -->
 	<delete id="deleteKeyword">
 		delete from Mangchi.donate_notification where notice_idx=#{noticeIdx}
@@ -52,16 +61,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{memberNick}, #{token})
 	</insert>
 	
+	<!-- 구독자 검사 -->
 	<select id="countTrue">
 		select count(*) from Mangchi.donate_subscribe where member_nick=#{memberNick}
 	</select>
 	
-	<select id="selectKeyword"
-			resultMap="resultFcm"
-			resultType="String">
-		select notice_keyword from Mangchi.donate_notification
-		where member_nick=#{memberNick}
-	</select>
+	<!-- 구독 취소 -->
+	<delete id="deleteSubscribe">
+		delete from Mangchi.donate_subscribe where member_nick=#{memberNick}
+	</delete>
+	
+
 	
 
 </mapper>

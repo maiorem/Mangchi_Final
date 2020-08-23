@@ -19,4 +19,6 @@ public interface NotificationDao {
 
 	List<String> selectKeyword(String memberNick);
 
+	int deleteSubscribe(String memberNick);
+
 }
