@@ -21,4 +21,6 @@ public interface NotificationDao {
 
 	int deleteSubscribe(String memberNick);
 
+	int countCheckSubsribe(String memberNick);
+
 }

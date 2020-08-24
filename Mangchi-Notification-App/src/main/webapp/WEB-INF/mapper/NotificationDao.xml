@@ -71,7 +71,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from Mangchi.donate_subscribe where member_nick=#{memberNick}
 	</delete>
 	
-
+	<!-- 사용자가 구독자인지 검사 -->
+	<select id="countCheckSubsribe">
+		select count(*) from Mangchi.donate_subscribe where member_nick=#{memberNick}
+	</select>
 	
 
 </mapper>

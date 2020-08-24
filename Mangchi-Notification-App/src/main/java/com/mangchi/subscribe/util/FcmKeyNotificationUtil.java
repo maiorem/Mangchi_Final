@@ -60,7 +60,7 @@ public class FcmKeyNotificationUtil {
 			String keyTitle=noticeRequest.getTitle();
 			List<String> keyword=dao.selectKeyword(noticeRequest.getMemberNick());
 			for(int i=0; i<keyword.size(); i++) {
-				if(!keyTitle.contains((CharSequence) keyword)) {
+				if(!keyTitle.contains((CharSequence) keyword.get(i))) {
 					throw new Exception("키워드가 일치하지 않습니다.");
 					
 				} else {
@@ -72,7 +72,7 @@ public class FcmKeyNotificationUtil {
 					String title= "동네에서 대여하기 :: MANGCHI! 나눔게시판";
 					
 					//내용 생성
-					String content= "키워드 새 글 : "+noticeRequest.getTitle();
+					String content= "키워드 새 글 : "+keyTitle;
 					
 					//메시지 작성
 					Message msg=Message.builder()
