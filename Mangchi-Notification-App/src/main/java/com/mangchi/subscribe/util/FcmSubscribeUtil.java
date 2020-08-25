@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import com.google.auth.oauth2.GoogleCredentials;
@@ -26,16 +27,14 @@ public class FcmSubscribeUtil {
 
 	@Autowired
 	private SqlSessionTemplate template;
+	
+	private static final String FIREBASE_CONFIG_PATH="donataboard-mangchi-project-firebase-adminsdk-4juy6-3c783cb128.json";
 
 	public void sendFcm(SubscribeCheckRequest subRequest) {
 
-		FileInputStream oauthKey;
-
 		try {
-			oauthKey = new FileInputStream("C:\\Users\\maior\\Documents\\GitHub\\Mangchi_Final\\Mangchi-DonateBoard-App\\src\\main\\webapp\\resources\\donataboard-mangchi-project-firebase-adminsdk-4juy6-3c783cb128.json");
-			System.out.println("FCM oauthKey : "+oauthKey);
 			FirebaseOptions options=new FirebaseOptions.Builder()
-					.setCredentials(GoogleCredentials.fromStream(oauthKey))
+					.setCredentials(GoogleCredentials.fromStream(new ClassPathResource(FIREBASE_CONFIG_PATH).getInputStream()))
 					.setDatabaseUrl("https://donataboard-mangchi-project.firebaseio.com")
 					.build();
 

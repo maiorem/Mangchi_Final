@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import com.google.auth.oauth2.GoogleCredentials;
@@ -24,19 +25,20 @@ import com.mangchi.subscribe.model.NotificationCheckRequest;
 public class FcmKeyNotificationUtil {
 
 	private NotificationDao dao;
+	private static final String FIREBASE_CONFIG_PATH="donataboard-mangchi-project-firebase-adminsdk-4juy6-3c783cb128.json";
 
+	
 	@Autowired
 	private SqlSessionTemplate template;
 
+	
 	public void sendFcm(NotificationCheckRequest noticeRequest) {
 
-		FileInputStream refreshToken;
 
 		try {
-			refreshToken = new FileInputStream("C:\\Users\\maior\\Documents\\GitHub\\Mangchi_Final\\Mangchi-DonateBoard-App\\src\\main\\webapp\\resources\\donataboard-mangchi-project-firebase-adminsdk-4juy6-3c783cb128.json");
 
 			FirebaseOptions options=new FirebaseOptions.Builder()
-					.setCredentials(GoogleCredentials.fromStream(refreshToken))
+					.setCredentials(GoogleCredentials.fromStream(new ClassPathResource(FIREBASE_CONFIG_PATH).getInputStream()))
 					.setDatabaseUrl("https://donataboard-mangchi-project.firebaseio.com")
 					.build();
 
