@@ -22,7 +22,7 @@ public class NotificationApiController {
 	
 	@GetMapping
 	public void subscribeNotification(SubscribeCheckRequest subRequest) {
-
+		System.out.println("구독 체크 요청 : "+subRequest);
 		subscribeUtil.sendFcm(subRequest);
 		
 	} 
