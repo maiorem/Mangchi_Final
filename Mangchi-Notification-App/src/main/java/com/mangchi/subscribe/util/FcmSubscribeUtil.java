@@ -29,13 +29,13 @@ public class FcmSubscribeUtil {
 
 	public void sendFcm(SubscribeCheckRequest subRequest) {
 
-		FileInputStream refreshToken;
+		FileInputStream oauthKey;
 
 		try {
-			refreshToken = new FileInputStream("C:\\Users\\maior\\Documents\\GitHub\\Mangchi_Final\\Mangchi-DonateBoard-App\\src\\main\\webapp\\resources\\donataboard-mangchi-project-firebase-adminsdk-4juy6-3c783cb128.json");
-			System.out.println("FCM refreshToken : "+refreshToken);
+			oauthKey = new FileInputStream("C:\\Users\\maior\\Documents\\GitHub\\Mangchi_Final\\Mangchi-DonateBoard-App\\src\\main\\webapp\\resources\\donataboard-mangchi-project-firebase-adminsdk-4juy6-3c783cb128.json");
+			System.out.println("FCM oauthKey : "+oauthKey);
 			FirebaseOptions options=new FirebaseOptions.Builder()
-					.setCredentials(GoogleCredentials.fromStream(refreshToken))
+					.setCredentials(GoogleCredentials.fromStream(oauthKey))
 					.setDatabaseUrl("https://donataboard-mangchi-project.firebaseio.com")
 					.build();
 
@@ -43,7 +43,7 @@ public class FcmSubscribeUtil {
 			if(FirebaseApp.getApps().isEmpty()) {
 				FirebaseApp.initializeApp(options);
 			}
-			
+
 			System.out.println("비공개키 초기화 : "+options);
 
 			dao=template.getMapper(NotificationDao.class);
@@ -68,20 +68,17 @@ public class FcmSubscribeUtil {
 				System.out.println("구독자의 토큰 : "+registrationToken);
 				System.out.println("구독자에게 가는 알림 제목 : "+title);
 				System.out.println("구독자에게 가는 알림 내용 : "+content);
-				
+
 				//메시지 작성
-				Message msg=Message.builder()
-						.setWebpushConfig(WebpushConfig.builder()
-								.setNotification(WebpushNotification.builder()
-										.setTitle(title)
-										.setBody(content)
-										.build())
-								.build())
+				Message message = Message.builder()
 						.setToken(registrationToken)
+						.setWebpushConfig(WebpushConfig.builder()
+								.putHeader("ttl", "300")
+								.setNotification(new WebpushNotification(title,	content))
+								.build())
 						.build();
 
-				//메시지를 firebase messaging에 보내기
-				String response=FirebaseMessaging.getInstance().send(msg);
+				String response = FirebaseMessaging.getInstance().sendAsync(message).get();
 
 				System.out.println("메시지 전송 성공 : " +response);
 			}

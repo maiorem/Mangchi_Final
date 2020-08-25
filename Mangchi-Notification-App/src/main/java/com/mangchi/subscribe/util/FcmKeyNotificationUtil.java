@@ -22,80 +22,77 @@ import com.mangchi.subscribe.model.NotificationCheckRequest;
 
 @Service
 public class FcmKeyNotificationUtil {
-	
+
 	private NotificationDao dao;
-	
+
 	@Autowired
 	private SqlSessionTemplate template;
-	
+
 	public void sendFcm(NotificationCheckRequest noticeRequest) {
-		
+
 		FileInputStream refreshToken;
-		
+
 		try {
 			refreshToken = new FileInputStream("C:\\Users\\maior\\Documents\\GitHub\\Mangchi_Final\\Mangchi-DonateBoard-App\\src\\main\\webapp\\resources\\donataboard-mangchi-project-firebase-adminsdk-4juy6-3c783cb128.json");
-		
-		FirebaseOptions options=new FirebaseOptions.Builder()
-				.setCredentials(GoogleCredentials.fromStream(refreshToken))
-				.setDatabaseUrl("https://donataboard-mangchi-project.firebaseio.com")
-				.build();
-		
-		//firebase 처음 호출시에만 초기화
-		if(FirebaseApp.getApps().isEmpty()) {
-			FirebaseApp.initializeApp(options);
-		}
-		
-		dao=template.getMapper(NotificationDao.class);
-		
-		//로그인 한 사람 토큰이 데이터베이스에 있는지 체크
-		int beCount=dao.countTrue(noticeRequest.getMemberNick());
-		
-		if(beCount<1) {
-		
-			throw new Exception("구독 중인 멤버가 아닙니다.");
-			
-		} else {
 
-			//글쓴 사람이 올린 제목과 데이터베이스의 키워드 비교
-			String keyTitle=noticeRequest.getTitle();
-			List<String> keyword=dao.selectKeyword(noticeRequest.getMemberNick());
-			for(int i=0; i<keyword.size(); i++) {
-				if(!keyTitle.contains((CharSequence) keyword.get(i))) {
-					throw new Exception("키워드가 일치하지 않습니다.");
-					
-				} else {
-					
-					//기기의 토큰 입력
-					String registrationToken= noticeRequest.getToken();
-					
-					//제목 생성
-					String title= "동네에서 대여하기 :: MANGCHI! 나눔게시판";
-					
-					//내용 생성
-					String content= "키워드 새 글 : "+keyTitle;
-					
-					//메시지 작성
-					Message msg=Message.builder()
-							.setWebpushConfig(WebpushConfig.builder()
-								.setNotification(WebpushNotification.builder()
-										.setTitle(title)
-										.setBody(content)
-										.build())
-								.build())
-							.setToken(registrationToken)
-							.build();
-					
-					//메시지를 firebase messaging에 보내기
-					String response=FirebaseMessaging.getInstance().send(msg);
-					
-					System.out.println("메시지 전송 성공 : " +response);
-					
-					
-				}
+			FirebaseOptions options=new FirebaseOptions.Builder()
+					.setCredentials(GoogleCredentials.fromStream(refreshToken))
+					.setDatabaseUrl("https://donataboard-mangchi-project.firebaseio.com")
+					.build();
+
+			//firebase 처음 호출시에만 초기화
+			if(FirebaseApp.getApps().isEmpty()) {
+				FirebaseApp.initializeApp(options);
 			}
 
-		
-		}
+			dao=template.getMapper(NotificationDao.class);
+
+			//로그인 한 사람 토큰이 데이터베이스에 있는지 체크
+			int beCount=dao.countTrue(noticeRequest.getMemberNick());
+
+			if(beCount<1) {
+
+				throw new Exception("구독 중인 멤버가 아닙니다.");
+
+			} else {
+
+				//글쓴 사람이 올린 제목과 데이터베이스의 키워드 비교
+				String keyTitle=noticeRequest.getTitle();
+				List<String> keyword=dao.selectKeyword(noticeRequest.getMemberNick());
+				for(int i=0; i<keyword.size(); i++) {
+					if(!keyTitle.contains((CharSequence) keyword.get(i))) {
+						throw new Exception("키워드가 일치하지 않습니다.");
+
+					} else {
+
+						//기기의 토큰 입력
+						String registrationToken= noticeRequest.getToken();
+
+						//제목 생성
+						String title= "동네에서 대여하기 :: MANGCHI! 나눔게시판";
+
+						//내용 생성
+						String content= "키워드 새 글 : "+keyTitle;
+
+						//메시지 작성
+						Message message = Message.builder()
+								.setToken(registrationToken)
+								.setWebpushConfig(WebpushConfig.builder()
+										.putHeader("ttl", "300")
+										.setNotification(new WebpushNotification(title,	content))
+										.build())
+								.build();
+
+						String response = FirebaseMessaging.getInstance().sendAsync(message).get();
+
+						System.out.println("메시지 전송 성공 : " +response);
+
+
+					}
+				}
+
+
+			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -109,8 +106,8 @@ public class FcmKeyNotificationUtil {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
+
 	}
 
 }
