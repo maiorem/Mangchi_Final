@@ -3,6 +3,10 @@
 
 <hr />
 
+## 클라이언트 소스 링크
+[소스보기](https://github.com/maiorem/Mangchi-Final)    
+
+
 ## 주요 기능    
 * Ajax를 활용한 서버-클라이언트 MSA 방식의 통신     
 * 원페이지 모달 방식 뷰    
@@ -10,9 +14,11 @@
 * Summernote Api를 활용한 에디터    
 * 무한스크롤과 댓글 페이징      
 * 검색       
-     
+
+
 ### 넣으려다 삽질하고 다음 프로젝트로 이전한 기능    
 * FireBase Api를 활용한 푸시알림
+
 
 <hr />
 
