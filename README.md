@@ -35,4 +35,4 @@
 <hr />
 
 ## Flow Chart    
-![Flow](https://ibb.co/mR48NBS][img]https://i.ibb.co/RgcyjS7/Mangchi-Na-Num.jpg)
+![Flow](https://i.ibb.co/RgcyjS7/Mangchi-Na-Num.jpg)
