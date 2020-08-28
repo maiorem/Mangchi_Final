@@ -3,13 +3,13 @@
 
 <hr />
 
-## 클라이언트 소스 링크
+## ▶ 클라이언트 소스 링크
 [전체](https://github.com/maiorem/Mangchi-Final)       
 [나눔게시판 뷰페이지](https://github.com/maiorem/Mangchi-Final/blob/master/Mangch_Client/src/main/webapp/WEB-INF/views/donateBoard/donateBoard.jsp)       
 [나눔게시판 js 파일](https://github.com/maiorem/Mangchi-Final/blob/master/Mangch_Client/src/main/webapp/resources/js/hong.js)
 
 
-## 주요 기능    
+## ▶ 주요 기능    
 * Ajax를 활용한 서버-클라이언트 MSA 방식의 통신     
 * 원페이지 모달 방식 뷰    
 * 이미지 포토카드 형식의 게시판 리스트      
@@ -23,7 +23,7 @@
 
 <hr />
 
-## 사용 기술    
+## ▶ 사용 기술    
 * VIEW : JSP     
 * SERVER : JAVA8    
 * DATABASE : MySQL, MyBatis    
@@ -34,16 +34,19 @@
 
 <hr />
 
-## 설계
+## ▶ 설계
 
-### Flow Chart    
+### ◇ Flow Chart    
 ![Flow](https://i.ibb.co/RgcyjS7/Mangchi-Na-Num.jpg)
 
 
-### 데이터베이스 구조
+### ◇ 데이터베이스 구조
 
-#### 전체 ERD
+#### - 전체 ERD
+
 ![erd](https://i.ibb.co/KKmQWHM/2.jpg)    
 
-#### 테이블 정의서
+
+#### - 테이블 정의서
+
 ![table](https://i.ibb.co/Gsd9X0q/image.jpg)
