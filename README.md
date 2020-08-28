@@ -27,7 +27,7 @@
 ## 사용 기술    
 * VIEW : JSP     
 * SERVER : JAVA8    
-* DATABASE : MySQL    
+* DATABASE : MySQL, MyBatis    
 * WAS : Tomcat8    
 * 배포 : AWS    
 * Framework : Spring Legacy   
