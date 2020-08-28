@@ -4,7 +4,9 @@
 <hr />
 
 ## 클라이언트 소스 링크
-[소스보기](https://github.com/maiorem/Mangchi-Final)    
+[전체](https://github.com/maiorem/Mangchi-Final)       
+[나눔게시판 뷰페이지](https://github.com/maiorem/Mangchi-Final/blob/master/Mangch_Client/src/main/webapp/WEB-INF/views/donateBoard/donateBoard.jsp)       
+[나눔게시판 js 파일](https://github.com/maiorem/Mangchi-Final/blob/master/Mangch_Client/src/main/webapp/resources/js/hong.js)
 
 
 ## 주요 기능    
