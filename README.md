@@ -36,3 +36,12 @@
 
 ## Flow Chart    
 ![Flow](https://i.ibb.co/RgcyjS7/Mangchi-Na-Num.jpg)
+
+
+## 데이터베이스 구조
+
+### 전체 ERD
+![erd](https://i.ibb.co/KKmQWHM/2.jpg)    
+
+### 테이블 정의서
+![table](https://i.ibb.co/Gsd9X0q/image.jpg)
