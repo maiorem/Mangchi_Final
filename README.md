@@ -15,8 +15,7 @@
 * 이미지 포토카드 형식의 게시판 리스트      
 * Summernote Api를 활용한 에디터    
 * 무한스크롤과 댓글 페이징      
-* 검색       
-
+* 검색
 
 ### 넣으려다 삽질하고 다음 프로젝트로 이전한 기능    
 * FireBase Api를 활용한 푸시알림
@@ -34,3 +33,6 @@
 * Lib : Maven
 
 <hr />
+
+## Flow Chart    
+[Flow](https://ibb.co/mR48NBS)
