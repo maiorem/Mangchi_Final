@@ -1,12 +1,16 @@
 package com.mangchi.donate.model;
 
+import java.sql.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Comments {
 	
 	private int commIdx;
 	private int donateIdx;
 	private String commWriter;
 	private String commText;
-	private String commRegdate;
+	private Date commRegdate;
 	private int commParent;
 	private int commDepth;
 	
@@ -30,7 +34,7 @@ public class Comments {
 		this.commDepth = commDepth;
 	}
 
-	public Comments(int commIdx, int donateIdx, String commWriter, String commText, String commRegdate, int commParent,
+	public Comments(int commIdx, int donateIdx, String commWriter, String commText, Date commRegdate, int commParent,
 			int commDepth) {
 		this.commIdx = commIdx;
 		this.donateIdx = donateIdx;
@@ -84,12 +88,12 @@ public class Comments {
 	}
 
 
-	public String getCommRegdate() {
+	public Date getCommRegdate() {
 		return commRegdate;
 	}
 
-
-	public void setCommRegdate(String commRegdate) {
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
+	public void setCommRegdate(Date commRegdate) {
 		this.commRegdate = commRegdate;
 	}
 
@@ -114,6 +118,11 @@ public class Comments {
 	}
 
 
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
+	public java.util.Date getToDate() {// 
+		return new java.util.Date(commRegdate.getTime());
+	}
+	
 	@Override
 	public String toString() {
 		return "Comments [commIdx=" + commIdx + ", donateIdx=" + donateIdx + ", commWriter=" + commWriter
