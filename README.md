@@ -66,10 +66,10 @@
 
 Spring legacy에서 지원하는 MVC 방식으로 게시판의 기본 기능을 구현하고 Mybatis로 데이터베이스에 매핑하여 클라이언트에 ajax로 송출함.
 
-[게시판 컨트롤러]    
-[게시판 DTO]    
-[게시판 DAO]    
-
+[게시판 컨트롤러](https://github.com/maiorem/Mangchi_Final/tree/master/Mangchi-DonateBoard-App/src/main/java/com/mangchi/donate/controller)    
+[게시판 DTO](https://github.com/maiorem/Mangchi_Final/tree/master/Mangchi-DonateBoard-App/src/main/java/com/mangchi/donate/model)    
+[게시판 DAO](https://github.com/maiorem/Mangchi_Final/tree/master/Mangchi-DonateBoard-App/src/main/java/com/mangchi/donate/dao)    
+[게시판 서비스](https://github.com/maiorem/Mangchi_Final/tree/master/Mangchi-DonateBoard-App/src/main/java/com/mangchi/donate/service)
 
 ### ◇ 깨알 삽질 일기
 1. Rest 방식으로 Ajax에 페이지 파라미터 받기.       
