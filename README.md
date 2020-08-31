@@ -53,6 +53,15 @@
 
 <hr />
 
+## ▶ 설정하기
+
+* [pom.xml](https://github.com/maiorem/Mangchi_Final/blob/master/Mangchi-DonateBoard-App/pom.xml)
+* [root-context.xml](https://github.com/maiorem/Mangchi_Final/blob/master/Mangchi-DonateBoard-App/src/main/webapp/WEB-INF/spring/root-context.xml)
+* [servlet-context.xml](https://github.com/maiorem/Mangchi_Final/blob/master/Mangchi-DonateBoard-App/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml)
+* [web.xml](https://github.com/maiorem/Mangchi_Final/blob/master/Mangchi-DonateBoard-App/src/main/webapp/WEB-INF/web.xml)
+
+<hr />
+
 ## ▶ 구현
 
 Spring legacy에서 지원하는 MVC 방식으로 게시판의 기본 기능을 구현하고 Mybatis로 데이터베이스에 매핑하여 클라이언트에 ajax로 송출함.
