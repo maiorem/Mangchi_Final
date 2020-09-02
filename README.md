@@ -20,7 +20,7 @@
 <hr />
 
 ## ▶ 사용 기술    
-* VIEW : JSP     
+* VIEW : JSP, JSTL     
 * SERVER : JAVA8    
 * DATABASE : MySQL, MyBatis    
 * WAS : Tomcat8    
