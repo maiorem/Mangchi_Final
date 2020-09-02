@@ -26,7 +26,7 @@
 * WAS : Tomcat8    
 * 배포 : AWS    
 * Framework : Spring Legacy   
-* Lib : Maven
+* Build : Maven
 
 <hr />
 
