@@ -1,6 +1,6 @@
 package com.mangchi.donate.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -12,7 +12,8 @@ public class Board {
 	private String content;
 	private String doImg;
 	private String doLoc;
-	private Date doDate;
+	@JsonFormat(pattern = "yyyy.MM.dd HH:mm")
+	private Timestamp doDate;
 	private int doViewCnt;
 	private int doParents;
 	private int doDepth;
@@ -49,7 +50,7 @@ public class Board {
 		this.doStatus = doStatus;
 	}
 
-	public Board(int donateIdx, String writer, String title, String content, String doImg, String doLoc, Date doDate,
+	public Board(int donateIdx, String writer, String title, String content, String doImg, String doLoc, Timestamp doDate,
 			int doViewCnt, int doParents, int doDepth, int doStatus) {
 		this.donateIdx = donateIdx;
 		this.writer = writer;
@@ -113,18 +114,12 @@ public class Board {
 	}
 	
 	
-	public Date getDoDate() {
+	public Timestamp getDoDate() {
 		return doDate;
 	}
 
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-	public void setDoDate(Date doDate) {
+	public void setDoDate(Timestamp doDate) {
 		this.doDate = doDate;
-	}
-
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-	public java.util.Date getToDate() {
-		return new java.util.Date(doDate.getTime());
 	}
 
 

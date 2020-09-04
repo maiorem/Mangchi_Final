@@ -1,6 +1,6 @@
 package com.mangchi.donate.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -10,7 +10,8 @@ public class Comments {
 	private int donateIdx;
 	private String commWriter;
 	private String commText;
-	private Date commRegdate;
+	@JsonFormat(pattern = "yyyy.MM.dd HH:mm")
+	private Timestamp commRegdate;
 	private int commParent;
 	private int commDepth;
 	
@@ -34,7 +35,7 @@ public class Comments {
 		this.commDepth = commDepth;
 	}
 
-	public Comments(int commIdx, int donateIdx, String commWriter, String commText, Date commRegdate, int commParent,
+	public Comments(int commIdx, int donateIdx, String commWriter, String commText, Timestamp commRegdate, int commParent,
 			int commDepth) {
 		this.commIdx = commIdx;
 		this.donateIdx = donateIdx;
@@ -88,12 +89,11 @@ public class Comments {
 	}
 
 
-	public Date getCommRegdate() {
+	public Timestamp getCommRegdate() {
 		return commRegdate;
 	}
 
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-	public void setCommRegdate(Date commRegdate) {
+	public void setCommRegdate(Timestamp commRegdate) {
 		this.commRegdate = commRegdate;
 	}
 
