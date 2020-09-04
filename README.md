@@ -4,9 +4,9 @@
 <hr />
 
 ## ▶ 클라이언트 소스 링크
-[전체](https://github.com/maiorem/Mangchi-Final)       
-[나눔게시판 뷰페이지](https://github.com/maiorem/Mangchi-Final/blob/master/Mangch_Client/src/main/webapp/WEB-INF/views/donateBoard/donateBoard.jsp)       
-[나눔게시판 js 파일](https://github.com/maiorem/Mangchi-Final/blob/master/Mangch_Client/src/main/webapp/resources/js/hong.js)
+[전체](https://github.com/seongMinS2/Mangchi-Final)       
+[나눔게시판 뷰페이지](https://github.com/seongMinS2/Mangchi-Final/blob/master/Mangch_Client/src/main/webapp/WEB-INF/views/donateBoard/donateBoard.jsp)       
+[나눔게시판 js 파일](https://github.com/seongMinS2/Mangchi-Final/blob/master/Mangch_Client/src/main/webapp/resources/js/hong.js)
 
 
 ## ▶ 주요 기능    
@@ -17,20 +17,16 @@
 * 무한스크롤과 댓글 페이징      
 * 검색
 
-### 넣으려다 삽질하고 다음 프로젝트로 이전한 기능    
-* FireBase Api를 활용한 푸시알림
-
-
 <hr />
 
 ## ▶ 사용 기술    
-* VIEW : JSP     
+* VIEW : JSP, JSTL     
 * SERVER : JAVA8    
 * DATABASE : MySQL, MyBatis    
 * WAS : Tomcat8    
 * 배포 : AWS    
 * Framework : Spring Legacy   
-* Lib : Maven
+* Build : Maven
 
 <hr />
 
@@ -53,14 +49,23 @@
 
 <hr />
 
+## ▶ 설정하기
+
+* [pom.xml](https://github.com/maiorem/Mangchi_Final/blob/master/Mangchi-DonateBoard-App/pom.xml)
+* [root-context.xml](https://github.com/maiorem/Mangchi_Final/blob/master/Mangchi-DonateBoard-App/src/main/webapp/WEB-INF/spring/root-context.xml)
+* [servlet-context.xml](https://github.com/maiorem/Mangchi_Final/blob/master/Mangchi-DonateBoard-App/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml)
+* [web.xml](https://github.com/maiorem/Mangchi_Final/blob/master/Mangchi-DonateBoard-App/src/main/webapp/WEB-INF/web.xml)
+
+<hr />
+
 ## ▶ 구현
 
 Spring legacy에서 지원하는 MVC 방식으로 게시판의 기본 기능을 구현하고 Mybatis로 데이터베이스에 매핑하여 클라이언트에 ajax로 송출함.
 
-[게시판 컨트롤러]    
-[게시판 DTO]    
-[게시판 DAO]    
-
+[게시판 컨트롤러](https://github.com/maiorem/Mangchi_Final/tree/master/Mangchi-DonateBoard-App/src/main/java/com/mangchi/donate/controller)    
+[게시판 DTO](https://github.com/maiorem/Mangchi_Final/tree/master/Mangchi-DonateBoard-App/src/main/java/com/mangchi/donate/model)    
+[게시판 DAO](https://github.com/maiorem/Mangchi_Final/tree/master/Mangchi-DonateBoard-App/src/main/java/com/mangchi/donate/dao)    
+[게시판 서비스](https://github.com/maiorem/Mangchi_Final/tree/master/Mangchi-DonateBoard-App/src/main/java/com/mangchi/donate/service)
 
 ### ◇ 깨알 삽질 일기
 1. Rest 방식으로 Ajax에 페이지 파라미터 받기.       
@@ -73,5 +78,18 @@ Spring legacy에서 지원하는 MVC 방식으로 게시판의 기본 기능을 
   글쓰기 폼에서 사용자가 html 사용을 하지 않아도 자동으로 구현하도록 하는 방법을 찾다가 summernote를 발견했다.    
   input type=text에 글을 쓰는대로 태그가 자동으로 포함되어 데이터베이스에 태그까지 들어가 상당히 편리했지만 이미지 삽입 활용에 어려움을 겪음.    
   결국 이미지를 에디터 툴바에서 제외하고 따로 이미지 파일을 받는 방법을 취했다. 본래의 용도대로 이미지를 삽입하면 곧바로 에디터 내에서 이미지를 볼 수 있게 하는 방법을 앞으로 연구해 볼 예정.     새로운 구조를 익히는 것보다 남이 편하라고 만들어 놓은 Api나 툴을 쓰는 것이 이상하게 더 어렵게 느껴진다....      
+
+3. 크로스 도메인 문제.        
+   서버를 배포하고 클라이언트 Ajax의 URL에 넣어 구동시키는데, 로컬 경로일 땐 잘 돌아가던 것들이 갑자기 보안 문제를 일으켜 오류가 났다. 오류 메시지를 보니 Cros Origin 문제라고 하는데, REST 방식으로 서버를 우회시켜 접근하는 것이 크롬의 동일 출처 정책과 부딪히는 모양이었다. 해결하기 위해 컨트롤러의 모든 메서드에 @CROSORIGIN 어노테이션을 삽입하여 서버와 클라이언트가 동일한 출처라는 것을 인증했고 다시 잘 돌아가기 시작함.
+   서버와 클라이언트를 동시에 개발하던 도중이었기에 쉽게 해결했지만 서버에 접근할 수 없는 클라이언트 개발의 경우 이를 어떻게 해결할 것인지도 학습해 둬야 할 것 같다.
+
+4. AWA 프리티어 이용하기.      
+  그동안 AWS에서 한 계정에 여러 인스턴스를 만들어도 전부 프리티어 가능한 버전으로 선택하면 공짜인 줄 알았다. 테스트에 구동 서버에 또다른 테스트 사이트 RDS를 마구잡이로 만들었다가 모르는 사이 요금이 폭발하는 일 발생. 결국 계정을 삭제하고 결제 대금 5만원을 지불하고 새 계정에서 다시 프리티어 인스턴스와 RDS를 받았다. 이번엔 테스트 용도라면 한 계정당 하나의 인스턴스만 쓰도록 할 것....        
   
-  
+
+<hr />
+
+## ▶ 클라이언트 배포 주소
+
+
+
