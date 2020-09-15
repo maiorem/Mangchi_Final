@@ -91,5 +91,5 @@ Spring legacy에서 지원하는 MVC 방식으로 게시판의 기본 기능을 
 
 ## ▶ 클라이언트 배포 주소
 
-[Link](http://ec2-54-180-115-119.ap-northeast-2.compute.amazonaws.com:8080/mangch/)
+[Link](http://ec2-54-180-115-119.ap-northeast-2.compute.amazonaws.com:8080/mangh/)
 
