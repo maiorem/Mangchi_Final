@@ -86,6 +86,12 @@ Spring legacy에서 지원하는 MVC 방식으로 게시판의 기본 기능을 
 4. AWS 프리티어 이용하기.      
   그동안 AWS에서 한 계정에 여러 인스턴스를 만들어도 전부 프리티어 가능한 버전으로 선택하면 공짜인 줄 알았다. 테스트에 구동 서버에 또다른 테스트 사이트 RDS를 마구잡이로 만들었다가 모르는 사이 요금이 폭발하는 일 발생. 결국 계정을 삭제하고 결제 대금 5만원을 지불하고 새 계정에서 다시 프리티어 인스턴스와 RDS를 받았다. 이번엔 테스트 용도라면 한 계정당 하나의 인스턴스만 쓰도록 할 것....        
   
+<hr />  
+
+## ▶ 최종 PPT
+
+[LINK](https://docs.google.com/presentation/d/1DmOVaqESFTq9CG8V9gJBoi3uH0eRIA_U1siTAqJq2-U/edit#slide=id.g9ae78c4272_5_3)
+
 
 <hr />
 
